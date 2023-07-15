@@ -4,6 +4,7 @@ from .models import NewsStory
 from .forms import StoryForm
 from django.db.models import F
 
+# the main page
 class IndexView(generic.ListView):
     template_name = 'news/index.html'
     context_object_name = "all_stories"
@@ -16,14 +17,15 @@ class IndexView(generic.ListView):
         context = super().get_context_data(**kwargs)
         # context['latest_stories'] = NewsStory.objects.all()[:4]
         context['latest_stories'] = NewsStory.objects.all().order_by('-pub_date')[:4]
+        # print(NewsStory.objects.all()[:4])
         return context
-
+# the Story page
 class StoryView(generic.DetailView):
     model = NewsStory
     template_name = 'news/story.html'
     context_object_name = 'story'
 
-# creat a new story
+# creat a new story, the page with form, able to add a new story
 class AddStoryView(generic.CreateView):
     form_class = StoryForm
     context_object_name = 'storyform'
