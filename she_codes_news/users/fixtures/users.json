@@ -1,0 +1,47 @@
+[
+
+  {
+    "model": "users.customuser",
+    "pk": 3,
+    "fields": {
+      "user": 3,
+      "is_superuser": 0,
+      "username": "asli",
+      "first_name": "Asli",
+      "last_name": "Yoruk"
+    }
+  },
+  {
+    "model": "users.customuser",
+    "pk": 4,
+    "fields": {
+      "user": 4,
+      "is_superuser": 0,
+      "username": "kate",
+      "first_name": "Kate",
+      "last_name": "Kirwin"
+    }
+  },
+  {
+    "model": "users.customuser",
+    "pk": 5,
+    "fields": {
+      "user": 5,
+      "is_superuser": 0,
+      "username": "andrew",
+      "first_name": "Andrew",
+      "last_name": "Bloyce"
+    }
+  },
+  {
+    "model": "users.customuser",
+    "pk": 6,
+    "fields": {
+      "user": 6,
+      "is_superuser": 0,
+      "username": "carlie",
+      "first_name": "Carlie",
+      "last_name": "Hamilton"
+    }
+  }
+]

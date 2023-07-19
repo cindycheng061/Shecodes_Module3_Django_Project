@@ -1,0 +1,20 @@
+[
+  {
+    "model": "users.userprofile",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "bio": "This is the bio for user 1.",
+      "location": "Brisbane"
+    }
+  },
+  {
+    "model": "users.userprofile",
+    "pk": 2,
+    "fields": {
+      "user": 2,
+      "bio": "This is the bio for user 2.",
+      "location": "Brisbane"
+    }
+  }
+]
