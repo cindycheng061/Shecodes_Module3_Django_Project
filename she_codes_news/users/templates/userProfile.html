@@ -3,7 +3,8 @@
 {% extends 'base.html' %} <!-- Your base template, if you have one -->
 
 {% block content %}
-    {% comment %} <h1>{{ userprofile.user.username }}</h1> {% endcomment %}
+    <h4>User Account Details:</h4>
+    <p>Account Name: {{ userprofile.user.username }}</p>
     <!-- Display other fields from UserProfile model -->
     <p>Bio: {{ userprofile.bio }}</p>
     <p>Location: {{ userprofile.location }}</p>
