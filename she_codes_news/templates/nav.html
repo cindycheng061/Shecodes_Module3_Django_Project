@@ -8,9 +8,10 @@
     {% if request.user.is_authenticated %}
         {% comment %} <a href="#">{{ user.username }}</a> {% endcomment %}
         <a href="{% url 'users:userProfile' pk=user.pk %}">{{ user.username }}</a>
-        <a href="{% url 'news:newStory'%}">Add NewStory</a>
+        {% comment %} <a href="{% url 'news:newStory'%}">Add NewStory</a> {% endcomment %}
         <a href="{% url 'logout' %}">Logout</a>
     {% else %}
         <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'users:createAccount'%}">Signup</a>
     {% endif %}
 </nav>
