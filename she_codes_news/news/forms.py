@@ -7,7 +7,7 @@ class StoryForm(ModelForm):
         model = NewsStory
         # delete author here, as login user is the author
         # fields =['title','author','pub_date','content']
-        fields =['title','image_url','pub_date','content']
+        fields =['title','image_url','pub_date','content','category']
         widgets = {
             'pub_date':forms.DateInput(
                 format='%m/%d/%Y',
