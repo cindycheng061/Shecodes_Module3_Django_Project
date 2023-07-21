@@ -8,7 +8,19 @@
 {% block content %}
 
 <br/>
-
+# add a search form by category
+<form action="{% url 'news:searchResults' %}" method="get">
+    <label for="category">Select Category:</label>
+    <select id="category" name="category">
+        <option value="">All</option>
+        <option value="politics">Politics</option>
+        <option value="sports">Sports</option>
+        <option value="entertainment">Entertainment</option>
+        <option value="technology">Technology</option>
+        <!-- Add more categories as needed -->
+    </select>
+    <button type="submit">Search</button>
+</form>
 {% comment %} <a href="{% url 'news:newStory'%}">Add NewStory</a> {% endcomment %}
 
 

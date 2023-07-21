@@ -38,6 +38,13 @@ class AddStoryView(generic.CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+class SearchResultsView(generic.ListView):
+    template_name = 'news/searchResults.html'
+    context_object_name = 'stories'
+    def get_queryset(self):
+        category = self.request.GET.get('category', '')
+        if category:
+            return NewsStory.objects.filter(category=category)
 
 
 
