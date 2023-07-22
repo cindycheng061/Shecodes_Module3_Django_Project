@@ -1,0 +1,17 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+{% if request.user.is_superuser %}
+<h2>Delete News</h2>
+<form method="POST">
+    {% csrf_token %}
+    <p>Are you sure that you want to delete the post "{{story.title}}"?</p>
+    <div>
+    <button type="submit">Yes, Delete</button>
+    <a href="{% url 'news:index' %}">Cancel</a>
+  </div>
+</form>
+{% else %}
+<meta http-equiv="refresh" content="0; url={% url 'login' %}">
+{% endif %}
+{% endblock content %}

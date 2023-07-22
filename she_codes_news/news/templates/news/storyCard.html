@@ -19,8 +19,12 @@
             <h4>{{ story.pub_date }}</h4>
         </div>
     </a>
+
     <a href="{% url 'news:updateNews' story.id %}">
-        upate story button
+        <button type="button">Update</button>
+    </a>
+    <a href="{% url 'news:deleteNews' story.id %}">
+        <button type="button">delete</button>
     </a>
 
 </div>

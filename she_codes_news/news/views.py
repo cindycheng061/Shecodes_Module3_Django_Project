@@ -7,6 +7,8 @@ from .forms import StoryForm
 from django.db.models import F
 
 from .forms import UpdateNewsForm
+from django.shortcuts import redirect,render,get_object_or_404
+from django.contrib import messages
 
 # the main page
 class IndexView(generic.ListView):
@@ -50,7 +52,7 @@ class SearchResultsView(generic.ListView):
         
 
 
-from django.shortcuts import redirect,render
+
 class UpdateNewsView(generic.UpdateView):
     model = NewsStory
     form_class = UpdateNewsForm
@@ -59,7 +61,7 @@ class UpdateNewsView(generic.UpdateView):
     success_url = reverse_lazy('news:index')
     
     def update_news(request,id):
-        instance = NewsStory.objects.get(id = id)
+        instance = NewsStory.objects.get(pk = id)
         if request.method == 'POST':
             form = UpdateNewsForm(request.POST, request.FILES,instance=instance)
         if form.is_valid():
@@ -68,7 +70,21 @@ class UpdateNewsView(generic.UpdateView):
         else:
             form = UpdateNewsForm(instance=instance)
             return render(request,'news:updateNews.html',{'form':form})
+        
 
+class DeleteNewsView(generic.DeleteView):
+    model = NewsStory
+    template_name = 'news/deleteNews.html'
+    success_url = reverse_lazy('news:index')
+    def delete_news(request, id):
+        instance = get_object_or_404(NewsStory, pk=id)
+        context = {'instance': instance}    
+        if request.method == 'GET':
+            return render(request, 'news:deleteNews.html',context)
+        elif request.method == 'POST':
+            instance.delete()
+            messages.success(request,  'The post has been deleted successfully.')
+            return redirect('news:index')
 
 
 

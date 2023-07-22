@@ -16,7 +16,7 @@
     grid-template-rows: 1fr 1fr 1fr;
     gap: 1px 1px;
     grid-template-areas: "left-1 right-1" "left-1 right-2" "left-1 right-3";
-    max-height: 500px;
+    max-height: 800px;
 }
 
 #story-card-1 {
@@ -48,6 +48,7 @@
 #story-card-3 .story-card-text h3,
 #story-card-4 .story-card-text h3 {
     font-size: 16px;
+    
 }
 
 #story-card-2 .story-card-text h4,
