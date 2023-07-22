@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block content%}
-<h2>Search Results for {{ category }} </h2>
+
+
 {% if stories %}
+<h2>Search Results for {{ stories.0.category }} </h2>
     <ul>
         {% for story in stories%}
             <li>{{ story.title}}</br> {{ story.author }}</br> {{ story.pub_date }}</li>

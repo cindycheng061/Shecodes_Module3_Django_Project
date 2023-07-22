@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content%}
+{% if request.user.is_superuser %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <!-- submit button -->
+    <input type="submit" value="Submit">
+</form>
+
+{% else %}
+<meta http-equiv="refresh" content="0; url={% url 'login' %}">
+{% endif %}
+{% endblock %}

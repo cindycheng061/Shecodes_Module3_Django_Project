@@ -18,3 +18,20 @@ class StoryForm(ModelForm):
                 }
             )
         }
+
+# Add a form to update the news
+class UpdateNewsForm(forms.ModelForm):
+    class Meta:
+        model = NewsStory
+        fields =['title','image_url','pub_date','content','category']
+        widgets = {
+            'pub_date':forms.DateInput(
+                format='%m/%d/%Y',
+                attrs={
+                    'class':'form-control',
+                    'placeholder':'Select a date',
+                    'type':'date'
+                }
+            )
+        }
+        

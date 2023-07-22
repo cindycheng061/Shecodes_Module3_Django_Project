@@ -8,9 +8,9 @@
 {% block content %}
 
 <br/>
-# add a search form by category
+{% comment %} add a search form by category {% endcomment %}
 <form action="{% url 'news:searchResults' %}" method="get">
-    <label for="category">Select Category:</label>
+    <label for="category">Search Stories by Category:</label>
     <select id="category" name="category">
         <option value="">All</option>
         <option value="politics">Politics</option>

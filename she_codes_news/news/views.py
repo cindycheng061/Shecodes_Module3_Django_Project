@@ -6,6 +6,8 @@ from .models import NewsStory
 from .forms import StoryForm
 from django.db.models import F
 
+from .forms import UpdateNewsForm
+
 # the main page
 class IndexView(generic.ListView):
     template_name = 'news/index.html'
@@ -45,6 +47,29 @@ class SearchResultsView(generic.ListView):
         category = self.request.GET.get('category', '')
         if category:
             return NewsStory.objects.filter(category=category)
+        
+
+
+from django.shortcuts import redirect,render
+class UpdateNewsView(generic.UpdateView):
+    model = NewsStory
+    form_class = UpdateNewsForm
+    context_object_name = 'updatenewsform'
+    template_name = 'news/updateNews.html'
+    success_url = reverse_lazy('news:index')
+    
+    def update_news(request,id):
+        instance = NewsStory.objects.get(id = id)
+        if request.method == 'POST':
+            form = UpdateNewsForm(request.POST, request.FILES,instance=instance)
+        if form.is_valid():
+            form.save()
+            return redirect('news:index')
+        else:
+            form = UpdateNewsForm(instance=instance)
+            return render(request,'news:updateNews.html',{'form':form})
+
+
 
 
 

@@ -19,4 +19,8 @@
             <h4>{{ story.pub_date }}</h4>
         </div>
     </a>
+    <a href="{% url 'news:updateNews' story.id %}">
+        upate story button
+    </a>
+
 </div>
