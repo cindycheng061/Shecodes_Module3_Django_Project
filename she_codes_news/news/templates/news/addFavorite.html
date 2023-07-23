@@ -1,0 +1,14 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+<h2>Add News to Favorites</h2>
+<form method="POST">
+    {% csrf_token %}
+    <p>Are you sure that you want to add "{{story.title}}" to favorites?</p>
+    <div>
+    <button type="submit">Yes, Please</button>
+    <a href="{% url 'news:index' %}">Cancel</a>
+  </div>
+</form>
+{% endif %}
+{% endblock content %}

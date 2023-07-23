@@ -17,5 +17,16 @@
         <img src="{{ story.image_url }}">
         {{ story.content|linebreaks }}
     </div>
+    <a href="{% url 'news:updateNews' story.id %}">
+        <button type="button">Update</button>
+    </a>
+    <a href="{% url 'news:deleteNews' story.id %}">
+        <button type="button">Delete</button>
+    </a>
+
+    <a href="{% url 'news:favoriteNews' story.id %}">
+        <button type="button">💖</button>
+    </a>
+
 </div>
 {% endblock %}

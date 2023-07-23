@@ -21,3 +21,4 @@ class NewsStory(models.Model):
     pub_date = models.DateTimeField()
     content = models.TextField()
     category = models.CharField(max_length=20,choices=CATEGORY_CHOICES,default='',blank=True,null=True)
+    favorites = models.ManyToManyField("users.CustomUser", related_name="favorites", default=None, blank=True)

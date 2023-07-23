@@ -10,6 +10,7 @@ from .forms import UpdateNewsForm
 from django.shortcuts import redirect,render,get_object_or_404
 from django.contrib import messages
 
+
 # the main page
 class IndexView(generic.ListView):
     template_name = 'news/index.html'
@@ -52,7 +53,6 @@ class SearchResultsView(generic.ListView):
         
 
 
-
 class UpdateNewsView(generic.UpdateView):
     model = NewsStory
     form_class = UpdateNewsForm
@@ -69,7 +69,7 @@ class UpdateNewsView(generic.UpdateView):
             return redirect('news:index')
         else:
             form = UpdateNewsForm(instance=instance)
-            return render(request,'news:updateNews.html',{'form':form})
+            return render(request,'news/updateNews.html',{'form':form})
         
 
 class DeleteNewsView(generic.DeleteView):
@@ -80,12 +80,37 @@ class DeleteNewsView(generic.DeleteView):
         instance = get_object_or_404(NewsStory, pk=id)
         context = {'instance': instance}    
         if request.method == 'GET':
-            return render(request, 'news:deleteNews.html',context)
+            return render(request, 'news/deleteNews.html',context)
         elif request.method == 'POST':
             instance.delete()
             messages.success(request,  'The post has been deleted successfully.')
             return redirect('news:index')
+        
+
+# add favourite stories to user
+from django.http import HttpResponseRedirect
 
 
 
-
+class FavoriteNewsView(generic.ListView):
+    model=NewsStory
+    template_name = 'news/favoriteNews.html'
+    # display user favorite News
+    def get(self, request, *args, **kwargs):
+        # The user_id is extracted from the URL pattern
+        user_id = self.kwargs.get('user_id')
+        favorite_stories = NewsStory.objects.filter(favorites=user_id)
+        context = {
+            'favorite_stories': favorite_stories,
+        }
+        return render(request, self.template_name, context)
+    # use add favorite news to user,
+class AddFavoriteView(generic.ListView):
+    model=NewsStory
+    template_name = 'news/addfavorite.html'
+    def get(self, request, *args, **kwargs):
+        # verify already favorited, then add favorites to user
+        if self.object.favorites.filter(id=self.request.user.id ) is False: 
+            self.object.favorites.add(self.request.user.id)
+        return redirect('news:addFavorite', kwargs={"pk": self.request.user.id})
+        

@@ -1,0 +1,20 @@
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}" />
+{% endblock %} 
+
+{% block content %}
+
+<div id="favorite-stories">
+        {% if favorite_stories %}
+            {% for story in favorite_stories %}
+                <!-- <p>{{ story.title }}</p> -->
+                {% include "./storyCard.html" with story=story %}
+            {% endfor %}
+        {% else %}
+            <p>No favorite stories are available.</p>
+        {% endif %}
+</div>
+{% endblock %}
