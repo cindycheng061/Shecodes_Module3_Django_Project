@@ -9,6 +9,8 @@
 
 
 {% block content %}
+{% comment %} {% if request.user.is_authenticated %} {% endcomment %}
+{% if request.user == story.author %}
 <div id="story-wrapper">
     <h2>{{ story.title }}</h2>
     <h4>{{ story.author }}</h4>
@@ -29,4 +31,5 @@
     </a>
 
 </div>
+{% endif %}
 {% endblock %}
