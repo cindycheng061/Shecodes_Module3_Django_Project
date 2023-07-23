@@ -18,7 +18,8 @@ testuser-account:
    password:Welcome@1234
 ## Database Schema![ {{ My ERD }} ]( {{ ./relative_path_to_your_entity_relationship_diagram }} )
 ## Project Features
-- [X] 1.1 Order stories by date![Stories_orderby_pubdate](./Readme_image/1.1png)
+- [X] 1.1 Order stories by date
+![Stories_orderby_pubdate](./Readme_image/1.1png)
 - [ ] 1.2 Styled "new story" form![ {{ Description of image }} ]( {{ ./relative_path_to_image_file }} )
 - [ ] Story images![ {{ Description of image }} ]( {{ ./relative_path_to_image_file }} )
 - [ ] Log-in/log-out![ {{ Description of image }} ]( {{ ./relative_path_to_image_file }} )
